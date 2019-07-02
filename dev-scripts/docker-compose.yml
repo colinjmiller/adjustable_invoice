@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+  postgres:
+    container_name: postgres
+    restart: always
+    image: postgres:10
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - 5430:5432
+  adjustable-invoice:
+    container_name: adjustable-invoice
+    restart: always
+    build:
+      context: ..
+      dockerfile: dev-scripts/Dockerfile
+    environment:
+      - FLASK_APP=adjustable-invoice
+      - FLASK_ENV=development
+      - FLASK_RUN_PORT=9999
+    ports:
+      - 9999:9999
+    volumes:
+      - ..:/adjustable-invoice
+    depends_on:
+      - postgres
+    entrypoint:
+      - /adjustable-invoice/dev-scripts/run_server.sh
