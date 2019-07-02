@@ -1,6 +1,10 @@
 Click==7.0
 Flask==1.0.3
+Flask-Assets==0.12
 itsdangerous==1.1.0
 Jinja2==2.10.1
 MarkupSafe==1.1.1
+pyScss==1.3.5
+six==1.12.0
+webassets==0.12.1
 Werkzeug==0.15.4

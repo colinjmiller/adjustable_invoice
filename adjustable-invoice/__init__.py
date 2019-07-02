@@ -1,6 +1,21 @@
 from flask import Flask
+
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
+from .views import home
+from .views import invoices
+app.register_blueprint(home.blueprint, url_prefix='/')
+app.register_blueprint(invoices.blueprint, url_prefix='/invoices')
+
+
+# Using a basic assets pipeline, no need for anything fancy
+from .util import assets
+assets.register_assets(app)
+
+# Add custom jinja2 filters for use in templates
+from .util import filters
+filters.register_filters(app)
+
+# Any any other helper functions that aren't quite filters
+from .util import helpers
+app.jinja_env.globals.update(helpers=helpers)
