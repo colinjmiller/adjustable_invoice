@@ -5,6 +5,7 @@
         <title>{% block title %}{% endblock %} | Adjustable Invoice App</title>
         <link rel="shortcut icon" href="{{ 'favicon.png' | image_url }}">
         <meta name="viewport" content="width=device-width">
+        <meta name="description" content="Adjustable invoices--the leader in invoice management"/>
         {% assets "styles" %}
             <link rel="stylesheet" href="{{ ASSET_URL }}">
         {% endassets %}
@@ -16,8 +17,8 @@
         </main>
 
         <footer class="bg-example siimple--bg-dark siimple--color-white siimple--py-3 siimple--px-3">
-            <p>Copyright &copy; {{ helpers.now().year }} <a href="https://www.cjmil.com" target="_blank" class="siimple--color-white">Colin Miller</a></p>
-            <p>This example website was built as part of the interview for <a href="https://placements.io/" target="_blank" class="siimple--color-white">placements.io</a>. Check out the repo for this project <a href="https://github.com/colinjmiller/adjustable-invoice" target="_blank" class="siimple--color-white">here</a>.
+            <p>Copyright &copy; {{ helpers.now().year }} <a href="https://www.cjmil.com" target="_blank" rel="noreferrer" class="siimple--color-white">Colin Miller</a></p>
+            <p>This example website was built as part of the interview for <a href="https://placements.io/" target="_blank" rel="noreferrer" class="siimple--color-white">placements.io</a>. See the <a href="https://github.com/colinjmiller/adjustable-invoice" target="_blank" rel="noreferrer" class="siimple--color-white">source code for this project on GitHub</a>.
         </footer>
 
         {% assets "js" %}

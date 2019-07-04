@@ -8,6 +8,14 @@ app.register_blueprint(home.blueprint, url_prefix='/')
 app.register_blueprint(invoices.blueprint, url_prefix='/invoices')
 
 
+# Hook up the database
+from .svc.base import db
+from .svc.users.models import User
+app.config['SQLALCHEMY_DATABASE_URI'] =\
+    'postgresql://postgres:password@0.0.0.0:5430/adjustable_invoice'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
+
 # Using a basic assets pipeline, no need for anything fancy
 from .util import assets
 assets.register_assets(app)

@@ -263,7 +263,7 @@ html {
                                             margin-top: 30px; }
 
                                             .siimple-link {
-                                              color: #4e91e4;
+                                              color: #3a73b9;
                                               font-weight: 600;
                                               text-decoration: none;
                                               transition: color 0.3s;
@@ -328,7 +328,7 @@ html {
                                                               background-color: #eef2f7; }
 
                                                               .siimple-btn.siimple-btn--primary {
-                                                                background-color: #4e91e4;
+                                                                background-color: #3a73b9;
                                                                 color: #fff; }
 
                                                                 .siimple-btn.siimple-btn--primary:hover {
@@ -382,7 +382,7 @@ html {
                                                                                             color: #fff; }
 
                                                                                             .siimple-btn.siimple-btn--blue {
-                                                                                              background-color: #4e91e4;
+                                                                                              background-color: #3a73b9;
                                                                                               color: #fff; }
 
                                                                                               .siimple-btn.siimple-btn--purple {
@@ -558,7 +558,7 @@ html {
         .siimple-spinner.siimple-spinner--primary,
         .siimple-spinner.siimple-spinner--primary:after,
         .siimple-spinner.siimple-spinner--primary:before {
-          background-color: #4e91e4; }
+          background-color: #3a73b9; }
 
           .siimple-spinner.siimple-spinner--success,
           .siimple-spinner.siimple-spinner--success:after,
@@ -603,7 +603,7 @@ html {
                           .siimple-spinner.siimple-spinner--blue,
                           .siimple-spinner.siimple-spinner--blue:after,
                           .siimple-spinner.siimple-spinner--blue:before {
-                            background-color: #4e91e4; }
+                            background-color: #3a73b9; }
 
                             .siimple-spinner.siimple-spinner--purple,
                             .siimple-spinner.siimple-spinner--purple:after,
@@ -671,7 +671,7 @@ html {
                                                         border-radius: 15px; }
 
                                                         .siimple-tag.siimple-tag--primary {
-                                                          background-color: #4e91e4;
+                                                          background-color: #3a73b9;
                                                           color: #fff; }
 
                                                           .siimple-tag.siimple-tag--success {
@@ -707,7 +707,7 @@ html {
                                                                           color: #fff; }
 
                                                                           .siimple-tag.siimple-tag--blue {
-                                                                            background-color: #4e91e4;
+                                                                            background-color: #3a73b9;
                                                                             color: #fff; }
 
                                                                             .siimple-tag.siimple-tag--purple {
@@ -763,10 +763,10 @@ html {
                                                                                             line-height: 20px; }
 
                                                                                             .siimple-tip.siimple-tip--primary {
-                                                                                              border-left-color: #4e91e4; }
+                                                                                              border-left-color: #3a73b9; }
 
                                                                                               .siimple-tip.siimple-tip--primary::before {
-                                                                                                background-color: #4e91e4; }
+                                                                                                background-color: #3a73b9; }
 
                                                                                                 .siimple-tip.siimple-tip--success {
                                                                                                   border-left-color: #4acf7f; }
@@ -817,10 +817,10 @@ html {
                                                                                                                                 background-color: #60d2b6; }
 
                                                                                                                                 .siimple-tip.siimple-tip--blue {
-                                                                                                                                  border-left-color: #4e91e4; }
+                                                                                                                                  border-left-color: #3a73b9; }
 
                                                                                                                                   .siimple-tip.siimple-tip--blue::before {
-                                                                                                                                    background-color: #4e91e4; }
+                                                                                                                                    background-color: #3a73b9; }
 
                                                                                                                                     .siimple-tip.siimple-tip--purple {
                                                                                                                                       border-left-color: #ac94e8; }
@@ -1032,7 +1032,7 @@ html {
                                                                                                                                                                                                                                   font-size: 14px;
                                                                                                                                                                                                                                   font-weight: 600;
                                                                                                                                                                                                                                   text-decoration: none;
-                                                                                                                                                                                                                                  color: #4e91e4;
+                                                                                                                                                                                                                                  color: #3a73b9;
                                                                                                                                                                                                                                   transition: color 0.3s;
                                                                                                                                                                                                                                   cursor: pointer; }
 
@@ -1092,7 +1092,7 @@ html {
 
                                                                                                                                                                                                                                                         .siimple-card-link {
                                                                                                                                                                                                                                                           position: relative;
-                                                                                                                                                                                                                                                          color: #4e91e4;
+                                                                                                                                                                                                                                                          color: #3a73b9;
                                                                                                                                                                                                                                                           font-weight: 700;
                                                                                                                                                                                                                                                           font-size: 15px;
                                                                                                                                                                                                                                                           padding: 12px;
@@ -1104,8 +1104,8 @@ html {
                                                                                                                                                                                                                                                             content: "";
                                                                                                                                                                                                                                                             width: 11px;
                                                                                                                                                                                                                                                             height: 11px;
-                                                                                                                                                                                                                                                            border-top: 3px solid #4e91e4;
-                                                                                                                                                                                                                                                            border-right: 3px solid #4e91e4;
+                                                                                                                                                                                                                                                            border-top: 3px solid #3a73b9;
+                                                                                                                                                                                                                                                            border-right: 3px solid #3a73b9;
                                                                                                                                                                                                                                                             -webkit-transform: rotate(45deg);
                                                                                                                                                                                                                                                             transform: rotate(45deg);
                                                                                                                                                                                                                                                             border-radius: 2px;
@@ -1231,7 +1231,7 @@ html {
 
                                                                                                                                                                                                                                                                                                       .siimple-menu-item:not(.siimple-menu-item--selected):hover {
                                                                                                                                                                                                                                                                                                         text-decoration: none !important;
-                                                                                                                                                                                                                                                                                                        color: #4e91e4; }
+                                                                                                                                                                                                                                                                                                        color: #3a73b9; }
 
                                                                                                                                                                                                                                                                                                         .siimple-menu-item--selected {
                                                                                                                                                                                                                                                                                                           background-color: #eef2f7;
@@ -1295,10 +1295,10 @@ html {
                                                                                                                                                                                                                                                                                                                           border-top: 8px solid #dde5ee; }
 
                                                                                                                                                                                                                                                                                                                           .siimple-table-cell--asc::before {
-                                                                                                                                                                                                                                                                                                                            border-bottom-color: #4e91e4; }
+                                                                                                                                                                                                                                                                                                                            border-bottom-color: #3a73b9; }
 
                                                                                                                                                                                                                                                                                                                             .siimple-table-cell--desc::after {
-                                                                                                                                                                                                                                                                                                                              border-top-color: #4e91e4; }
+                                                                                                                                                                                                                                                                                                                              border-top-color: #3a73b9; }
 
                                                                                                                                                                                                                                                                                                                               .siimple-table-cell--1 {
                                                                                                                                                                                                                                                                                                                                 width: 8.33%; }
@@ -1482,7 +1482,7 @@ html {
                                                                                                                                                                                                                                                                                                                                                                                                                     margin-top: 5px; }
 
                                                                                                                                                                                                                                                                                                                                                                                                                     .siimple-box.siimple-box--primary {
-                                                                                                                                                                                                                                                                                                                                                                                                                      background-color: #4e91e4;
+                                                                                                                                                                                                                                                                                                                                                                                                                      background-color: #3a73b9;
                                                                                                                                                                                                                                                                                                                                                                                                                       color: #fff; }
 
                                                                                                                                                                                                                                                                                                                                                                                                                       .siimple-box.siimple-box--success {
@@ -1518,7 +1518,7 @@ html {
                                                                                                                                                                                                                                                                                                                                                                                                                                       color: #fff; }
 
                                                                                                                                                                                                                                                                                                                                                                                                                                       .siimple-box.siimple-box--blue {
-                                                                                                                                                                                                                                                                                                                                                                                                                                        background-color: #4e91e4;
+                                                                                                                                                                                                                                                                                                                                                                                                                                        background-color: #3a73b9;
                                                                                                                                                                                                                                                                                                                                                                                                                                         color: #fff; }
 
                                                                                                                                                                                                                                                                                                                                                                                                                                         .siimple-box.siimple-box--purple {
@@ -1737,7 +1737,7 @@ html {
                         margin-right: 10px; }
 
                         .siimple-footer-link:hover {
-                          color: #4e91e4 !important; }
+                          color: #3a73b9 !important; }
 
                           .siimple-footer-link-description {
                             display: block;
@@ -1789,7 +1789,7 @@ html {
                                                   color: #fff; }
 
                                                   .siimple-footer.siimple-footer--blue {
-                                                    background-color: #4e91e4;
+                                                    background-color: #3a73b9;
                                                     color: #fff; }
 
                                                     .siimple-footer.siimple-footer--purple {
@@ -1910,7 +1910,7 @@ html {
               margin-top: 5px; }
 
               .siimple-jumbotron.siimple-jumbotron--primary {
-                background-color: #4e91e4;
+                background-color: #3a73b9;
                 color: #fff; }
 
                 .siimple-jumbotron.siimple-jumbotron--success {
@@ -1946,7 +1946,7 @@ html {
                                 color: #fff; }
 
                                 .siimple-jumbotron.siimple-jumbotron--blue {
-                                  background-color: #4e91e4;
+                                  background-color: #3a73b9;
                                   color: #fff; }
 
                                   .siimple-jumbotron.siimple-jumbotron--purple {
@@ -2087,7 +2087,7 @@ html {
 
             .siimple-navbar.siimple-navbar--primary {
               color: #fff;
-              background-color: #4e91e4; }
+              background-color: #3a73b9; }
 
               .siimple-navbar.siimple-navbar--primary .siimple-navbar-item,
               .siimple-navbar.siimple-navbar--primary .siimple-navbar-link,
@@ -2197,7 +2197,7 @@ html {
                                                                   color: #fff; }
 
                                                                   .siimple-navbar.siimple-navbar--blue {
-                                                                    background-color: #4e91e4;
+                                                                    background-color: #3a73b9;
                                                                     color: #fff; }
 
                                                                     .siimple-navbar.siimple-navbar--blue .siimple-navbar-title {
@@ -2364,7 +2364,7 @@ html {
                                                                                                                                                     border-color: #fff; }
 
                                                                                                                                                     .siimple-checkbox input[type=checkbox]:checked + label {
-                                                                                                                                                      background-color: #4e91e4; }
+                                                                                                                                                      background-color: #3a73b9; }
 
                                                                                                                                                       .siimple-checkbox--success input[type=checkbox]:checked + label {
                                                                                                                                                         background-color: #4acf7f; }
@@ -2519,10 +2519,10 @@ html {
                                                                                                                                                                                                   visibility: hidden; }
 
                                                                                                                                                                                                   .siimple-radio input[type=radio]:checked + label:after {
-                                                                                                                                                                                                    background-color: #4e91e4; }
+                                                                                                                                                                                                    background-color: #3a73b9; }
 
                                                                                                                                                                                                     .siimple-radio input[type=radio]:checked + label {
-                                                                                                                                                                                                      border-color: #4e91e4; }
+                                                                                                                                                                                                      border-color: #3a73b9; }
 
                                                                                                                                                                                                       .siimple-radio--success input[type=radio]:checked + label:after {
                                                                                                                                                                                                         background-color: #4acf7f; }
@@ -2618,7 +2618,7 @@ html {
                                                                                                                                                                                                                                       visibility: hidden; }
 
                                                                                                                                                                                                                                       .siimple-switch input[type=checkbox]:checked ~ label::before {
-                                                                                                                                                                                                                                        background-color: #4e91e4; }
+                                                                                                                                                                                                                                        background-color: #3a73b9; }
 
                                                                                                                                                                                                                                         .siimple-switch input[type=checkbox]:checked ~ label::after {
                                                                                                                                                                                                                                           left: 16px;
@@ -3078,7 +3078,7 @@ html {
               animation: siimple-progress-animation 4s linear infinite; }
 
               .siimple-progress.siimple-progress--primary > span {
-                background-color: #4e91e4;
+                background-color: #3a73b9;
                 color: #fff; }
 
                 .siimple-progress.siimple-progress--success > span {
@@ -3218,10 +3218,10 @@ html {
                                                             left: 15.5px; }
 
                                                             .siimple-steps--primary .siimple-steps-item-bubble {
-                                                              background-color: #4e91e4; }
+                                                              background-color: #3a73b9; }
 
                                                               .siimple-steps--primary .siimple-steps-item:not(:last-child)::after {
-                                                                background-color: #4e91e4; }
+                                                                background-color: #3a73b9; }
 
                                                                 .siimple-steps--success .siimple-steps-item-bubble {
                                                                   background-color: #4acf7f; }
@@ -3254,10 +3254,10 @@ html {
                                                                                     background-color: #dde5ee; }
 
                                                                                     .siimple--color-primary {
-                                                                                      color: #4e91e4 !important; }
+                                                                                      color: #3a73b9 !important; }
 
                                                                                       .siimple--bg-primary {
-                                                                                        background-color: #4e91e4 !important; }
+                                                                                        background-color: #3a73b9 !important; }
 
                                                                                         .siimple--color-success {
                                                                                           color: #4acf7f !important; }
