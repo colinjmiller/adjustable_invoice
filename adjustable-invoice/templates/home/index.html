@@ -3,5 +3,28 @@
     Home
 {%- endblock %}
 {% block content %}
-    <h1>Home!</h1>
+    <section class="siimple-content siimple-content--extra-small">
+        <div class="siimple--py-5 util-text-center">
+            <h1>Invoice Adjuster</h1>
+            <p>All your line items--all in one place.</p>
+        </div>
+        <form class="siimple-form" method="POST" action="#">
+            <div class="siimple-field">
+                <label class="siimple-field-label" for="email">Email</label>
+                <input class="siimple-input siimple-input--fluid" type="email" id="email" name="email" placeholder="email@example.com">
+            </div>
+            <div class="siimple-field">
+                <label class="siimple-field-label" for="password">Password</label>
+                <input class="siimple-input siimple-input--fluid" type="password" id="password" name="password" placeholder="password">
+            </div>
+            <button class="siimple-btn siimple-btn--primary siimple-btn--fluid siimple--text-bold">Login</button>
+        </form>
+        <div class="siimple-rule"></div>
+        <div class="siimple-card siimple--mt-5 util-text-center" align="center">
+            <div class="siimple-card-body">
+                <h2>Not a member?</h2>
+                <p>No problem. <a href="#" class="siimple-link">Sign up</a> today!</p>
+            </div>
+        </div>
+    </section>
 {% endblock %}

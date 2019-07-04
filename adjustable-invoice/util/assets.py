@@ -6,6 +6,8 @@ def register_assets(app):
     bundles = {
         'styles': Bundle(
             'stylesheets/normalize.css',
+            'stylesheets/siimple.css',
+            'stylesheets/util.scss',
             'stylesheets/application.scss',
             filters='pyscss',
             output='output/styles.css'
