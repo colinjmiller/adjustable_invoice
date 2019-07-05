@@ -17,3 +17,5 @@ def session_scope():
         raise
     finally:
         session.close()
+
+from .users.models import User
