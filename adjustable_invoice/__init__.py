@@ -8,6 +8,20 @@ app.register_blueprint(home.blueprint, url_prefix='/')
 app.register_blueprint(invoices.blueprint, url_prefix='/invoices')
 
 
+# Configure settings for the environment
+app.secret_key = 'CHANGEME'
+
+# Session management
+from flask_login import LoginManager
+from .svc.users.api import UsersAPI
+login_manager = LoginManager()
+login_manager.login_view = "home.index"
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return UsersAPI.get_user_by_id(user_id)
+
 # Hook up the database
 from .svc.base import db
 from .svc.users.models import User

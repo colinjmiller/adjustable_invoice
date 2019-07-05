@@ -9,3 +9,11 @@ class BaseUsersException(Exception):
 
 class UserAlreadyExists(BaseUsersException):
     pass
+
+
+class AuthenticationFailed(BaseUsersException):
+    pass
+
+
+class UserNotFound(BaseUsersException):
+    pass

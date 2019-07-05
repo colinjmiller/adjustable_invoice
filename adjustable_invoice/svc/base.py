@@ -19,3 +19,4 @@ def session_scope():
         session.close()
 
 from .users.models import User
+from .invoices.models import Invoice, LineItem
