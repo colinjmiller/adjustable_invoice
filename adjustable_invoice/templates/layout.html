@@ -11,6 +11,18 @@
         {% endassets %}
     </head>
     <body>
+        {% if current_user.is_authenticated %}
+            <nav class="siimple-navbar siimple-navbar--extra-large siimple-navbar--dark">
+                <a href="{{ url_for('home.index') }}" class="siimple-navbar-title">Adjustable Invoices</a>
+                <a href="{{ url_for('home.logout') }}" class="siimple--float-right">
+                    <div class="siimple-navbar-item">Logout</div>
+                </a>
+                <!-- Go to your profile link, didn't implement -->
+                <a href="#" class="siimple--float-right">
+                    <div class="siimple-navbar-item">{{ current_user.email }}</div>
+                </a>
+            </nav>
+        {% endif %}
         <main>
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}

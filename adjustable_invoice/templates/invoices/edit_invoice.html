@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title -%}
+    Invoices
+{%- endblock %}
+{% block content %}
+    <section class="siimple-content siimple-content--extra-large">
+        <div class="siimple-grid">
+            <div class="siimple-grid-row">
+                <div class="siimple-grid-col siimple-grid-col--3">
+                    <div class="siimple-card siimple--display-inline-block">
+                            <div class="siimple-card-header">Add Line Items</div>
+                            <div class="siimple-card-body">
+                                <div class="siimple-paragraph siimple--text-justify">
+                                    Adjust the total of this invoice by adding line items to it.
+                                </div>
+                                <a href="{{ url_for('invoices.add_line_items', invoice_id=invoice.id, page=1) }}" class="siimple-btn siimple-btn--fluid siimple-btn--primary">Add Line Item</a>
+                            </div>
+                        </div>
+                </div>
+                <div class="siimple-grid-col siimple-grid-col--9">
+                    <h1>{{ invoice.name }}</h1>
+                    <p>This invoice has {{ line_items | length }} line item{{ 's' if line_items | length == 1 }} associated with it</p>
+                    {% for line_item in line_items %}
+                        <p>{{ line_item }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

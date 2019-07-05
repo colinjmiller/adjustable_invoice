@@ -3,15 +3,53 @@
     Invoices
 {%- endblock %}
 {% block content %}
-    <p>You are logged in as {{ current_user.email }}</p>
-    <section class="siimple-content siimple-content--extra-small">
-        <div class="siimple--py-5 util-text-center">
-            <h1>Invoice List</h1>
+    {% if not invoices %}
+        <section class="siimple-content siimple-content--small">
+            <div class="siimple-tip siimple-tip--success siimple-tip--exclamation">
+                Welcome! Get started adjusting your invoices by creating one below.
+            </div>
+        </section>
+    {% endif %}
+    <section class="siimple-content siimple-content--extra-large">
+        <div class="siimple-grid">
+            <div class="siimple-grid-row">
+                <div class="siimple-grid-col siimple-grid-col--3">
+                    <div class="siimple-card siimple--display-inline-block">
+                            <div class="siimple-card-header">Create Invoice</div>
+                            <div class="siimple-card-body">
+                                <div class="siimple-paragraph siimple--text-justify">
+                                    After creating an invoice, you can add line-item adjustments to it.
+                                </div>
+                                <a href="{{ url_for('invoices.new_invoice') }}" class="siimple-btn siimple-btn--fluid siimple-btn--primary">Create</a>
+                            </div>
+                        </div>
+                </div>
+                <div class="siimple-grid-col siimple-grid-col--9">
+                    {% if invoices %}
+                    <table class="siimple-table siimple-table--border siimple-table--striped">
+                        <thead class="siimple-table-header">
+                            <tr class="siimple-table-row">
+                                <th class="siimple-table-cell">ID</th>
+                                <th class="siimple-table-cell">Name</th>
+                                <th class="siimple-table-cell">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="siimple-table-body">
+                            {% for invoice in invoices %}
+                                <tr class="siimple-table-row">
+                                    <td class="siimple-table-cell">{{ invoice.id }}</td>
+                                    <td class="siimple-table-cell">{{ invoice.name }}</td>
+                                    <td class="siimple-table-cell"><a href="{{ url_for('invoices.edit_invoice', invoice_id=invoice.id) }}">Adjust Line Items</a> | <a href="#">Print</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                        <h2>You don't have any invoices</h2>
+                        <p>As soon as you make one, it'll start showing up here.</p>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-        {% for invoice in invoices %}
-            {{ invoice }}
-        {% else %}
-            No invoices
-        {% endfor %}
     </section>
 {% endblock %}

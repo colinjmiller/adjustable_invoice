@@ -66,3 +66,16 @@ class UsersAPI():
                 return None
 
             return UserWrapper(UsersAPI.user_to_dict(user))
+
+    def get_user_by_email(email):
+        with session_scope() as session:
+            user = (
+                session.query(AppUser)
+                .filter_by(email=email)
+                .first()
+            )
+
+            if not user:
+                return None
+
+            return UserWrapper(UsersAPI.user_to_dict(user))

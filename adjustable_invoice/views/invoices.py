@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from adjustable_invoice.svc.invoices.api import InvoicesAPI
+from adjustable_invoice.svc.invoices.exceptions import InvoiceNotFound
 from .forms import InvoiceCreationForm
 
 blueprint = Blueprint('invoices', __name__)
@@ -26,3 +27,28 @@ def new_invoice():
 
     InvoicesAPI.create_invoice(form.name.data)
     return redirect(url_for('invoices.index'))
+
+
+@blueprint.route('/edit_invoice/<int:invoice_id>', methods=['GET'])
+@login_required
+def edit_invoice(invoice_id):
+    try:
+        invoice = InvoicesAPI.get_invoice_by_id(invoice_id)
+        line_items = InvoicesAPI.get_line_items_on_invoice(invoice_id)
+    except InvoiceNotFound as e:
+        flash(e.value, 'error')
+        return redirect(url_for('invoices.index'))
+
+    return render_template('invoices/edit_invoice.html',
+                           invoice=invoice,
+                           line_items=line_items)
+
+@blueprint.route('/edit_invoice/<int:invoice_id>/add_line_items/<int:page>')
+@login_required
+def add_line_items(invoice_id, page):
+    line_items = InvoicesAPI.get_available_line_items(invoice_id, page - 1)
+
+    return render_template('invoices/add_line_items.html',
+                           invoice_id=invoice_id,
+                           line_items=line_items,
+                           page=page)

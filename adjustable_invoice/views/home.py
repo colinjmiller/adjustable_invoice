@@ -2,13 +2,15 @@ from flask import Blueprint, render_template, request, redirect, flash, url_for
 from .forms import UserForm
 from adjustable_invoice.svc.users import exceptions
 from adjustable_invoice.svc.users.api import UsersAPI
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 
 blueprint = Blueprint('home', __name__)
 
 
 @blueprint.route('/')
 def index():
+    if current_user.is_authenticated:
+        return redirect(url_for('invoices.index'))
     return render_template('home/index.html')
 
 
@@ -51,7 +53,9 @@ def signup():
     except exceptions.UserAlreadyExists as e:
         flash(e.value, 'error')
         return redirect(url_for('home.signup'))
-    return str(user)
+
+    login_user(UsersAPI.get_user_by_email(user['email']))
+    return redirect(url_for('invoices.index'))
 
 
 def _handle_invalid_form(form, redirect_location):

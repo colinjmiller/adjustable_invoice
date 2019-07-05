@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block title -%}
+    Invoices
+{%- endblock %}
+{% block content %}
+    <section class="siimple-content siimple-content--extra-large">
+        <div class="siimple-grid">
+            <div class="siimple-grid-row">
+                <div class="siimple-grid-col siimple-grid-col--3">
+                    <div class="siimple-card siimple--display-inline-block">
+                            <div class="siimple-card-header">Finish Editing</div>
+                            <div class="siimple-card-body">
+                                <div class="siimple-paragraph siimple--text-justify">
+                                    Don't have any more line items to add?
+                                </div>
+                                <a href="{{ url_for('invoices.edit_invoice', invoice_id=invoice_id) }}" class="siimple-btn siimple-btn--fluid siimple-btn--primary">All Done!</a>
+                            </div>
+                        </div>
+                </div>
+                <div class="siimple-grid-col siimple-grid-col--9">
+                    <h1>Available Line Items</h1>
+                    <p>Showing {{ line_items | length }} possible results.</p>
+                    {% for line_item in line_items %}
+                        <p>{{ line_item }}</p>
+                    {% endfor %}
+                    {% if page > 1 %}
+                        <a href="{{ url_for('invoices.add_line_items', invoice_id=invoice_id, page=(page - 1)) }}">Previous Page</a> |
+                    {% endif %}
+                    Current Page: {{ page }} | <a href="{{ url_for('invoices.add_line_items', invoice_id=invoice_id, page=(page + 1)) }}">Next Page</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
