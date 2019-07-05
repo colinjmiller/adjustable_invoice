@@ -12,7 +12,7 @@ app.register_blueprint(invoices.blueprint, url_prefix='/invoices')
 from .svc.base import db
 from .svc.users.models import User
 app.config['SQLALCHEMY_DATABASE_URI'] =\
-    'postgresql://postgres:password@0.0.0.0:5430/adjustable_invoice'
+    'postgresql://postgres:password@adjustable_invoice_db/adjustable_invoice'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 

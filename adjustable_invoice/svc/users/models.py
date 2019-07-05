@@ -1,4 +1,4 @@
-from .svc.base import db
+from adjustable_invoice.svc.base import db
 
 
 class User(db.Model):

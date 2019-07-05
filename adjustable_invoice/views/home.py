@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-# from .svc.users.api import UsersAPI
+from adjustable_invoice.svc.users.api import UsersAPI
 
 blueprint = Blueprint('home', __name__)
 
@@ -14,4 +14,5 @@ def signup():
     if request.method == 'GET':
         return render_template('home/signup.html')
     else:
-        return 'OK'
+        user = UsersAPI.create_user('testing@example.com', 'password')
+        return str(user)

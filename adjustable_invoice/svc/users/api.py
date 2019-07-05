@@ -1,11 +1,11 @@
-from .svc.base import session_scope
-from .svc.users import exceptions
-from .svc.users.models import User
+from adjustable_invoice.svc.base import session_scope
+from adjustable_invoice.svc.users import exceptions
+from adjustable_invoice.svc.users.models import User
 
 
 class UsersAPI():
 
-    def create_user(self, email, password):
+    def create_user(email, password):
         with session_scope() as session:
             existing_user = (
                 session.query(User)
@@ -20,3 +20,4 @@ class UsersAPI():
             new_user.email = email
             new_user.password = password
             session.add(new_user)
+            return new_user

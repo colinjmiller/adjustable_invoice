@@ -15,7 +15,7 @@ _mailinglist
 .pytest_cache/
 .idea/
 docs/_build/
-adjustable-invoice/static/.webassets-cache
+adjustable_invoice/static/.webassets-cache
 
 # Coverage reports
 htmlcov/
