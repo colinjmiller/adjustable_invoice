@@ -3,6 +3,15 @@
     Invoices
 {%- endblock %}
 {% block content %}
-    <h1>Invoices!</h1>
     <p>You are logged in as {{ current_user.email }}</p>
+    <section class="siimple-content siimple-content--extra-small">
+        <div class="siimple--py-5 util-text-center">
+            <h1>Invoice List</h1>
+        </div>
+        {% for invoice in invoices %}
+            {{ invoice }}
+        {% else %}
+            No invoices
+        {% endfor %}
+    </section>
 {% endblock %}

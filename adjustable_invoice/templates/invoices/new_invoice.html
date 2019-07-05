@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title -%}
+    Create a new invoice
+{%- endblock %}
+{% block content %}
+    <section class="siimple-content siimple-content--extra-small">
+        <div class="siimple--py-5 util-text-center">
+            <h1>New Invoice</h1>
+        </div>
+        <form class="siimple-form" method="POST" action="{{ url_for('invoices.new_invoice') }}">
+            <div class="siimple-field">
+                <label class="siimple-field-label" for="invoice-name">Invoice Name</label>
+                <input class="siimple-input siimple-input--fluid" type="text" id="invoice-name" name="name" placeholder="e.g. July 2019">
+            </div>
+            <button class="siimple-btn siimple-btn--primary siimple-btn--fluid siimple--text-bold">Create Invoice</button>
+        </form>
+    </section>
+{% endblock %}

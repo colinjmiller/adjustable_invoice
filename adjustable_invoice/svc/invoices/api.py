@@ -1,5 +1,6 @@
 from adjustable_invoice.svc.base import session_scope
 from adjustable_invoice.svc.invoices.models import Invoice, LineItem
+from flask_login import current_user
 
 
 class InvoicesAPI():
@@ -20,3 +21,10 @@ class InvoicesAPI():
                 .filter_by(user_id=user_id)
             )
             return InvoicesAPI.invoices_to_list(invoices)
+
+    def create_invoice(invoice_name):
+        with session_scope() as session:
+            invoice = Invoice()
+            invoice.user_id = current_user.get_id()
+            invoice.name = invoice_name
+            session.add(invoice)

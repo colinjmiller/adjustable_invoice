@@ -18,5 +18,5 @@ def session_scope():
     finally:
         session.close()
 
-from .users.models import User
+from .users.models import AppUser
 from .invoices.models import Invoice, LineItem

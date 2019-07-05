@@ -24,9 +24,8 @@ def load_user(user_id):
 
 # Hook up the database
 from .svc.base import db
-from .svc.users.models import User
 app.config['SQLALCHEMY_DATABASE_URI'] =\
-    'postgresql://postgres:password@adjustable_invoice_db/adjustable_invoice'
+    'postgresql://postgres:password@adjustable_invoice_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 

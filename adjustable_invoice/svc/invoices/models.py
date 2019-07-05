@@ -3,7 +3,7 @@ from adjustable_invoice.svc.base import db
 
 class Invoice(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('app_user.id'))
     name = db.Column(db.String)
 
 
