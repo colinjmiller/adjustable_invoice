@@ -6,6 +6,10 @@
     <section class="siimple-content siimple-content--extra-large">
         <div class="siimple-grid">
             <div class="siimple-grid-row">
+                <div class="siimple-grid-col siimple-grid-col--9">
+                    <h1>Available Line Items</h1>
+                    <p>Showing {{ line_items | length }} possible results.</p>
+                </div>
                 <div class="siimple-grid-col siimple-grid-col--3">
                     <div class="siimple-card siimple--display-inline-block">
                             <div class="siimple-card-header">Finish Editing</div>
@@ -17,18 +21,42 @@
                             </div>
                         </div>
                 </div>
-                <div class="siimple-grid-col siimple-grid-col--9">
-                    <h1>Available Line Items</h1>
-                    <p>Showing {{ line_items | length }} possible results.</p>
-                    {% for line_item in line_items %}
-                        <p>{{ line_item }}</p>
-                    {% endfor %}
-                    {% if page > 1 %}
-                        <a href="{{ url_for('invoices.add_line_items', invoice_id=invoice_id, page=(page - 1)) }}">Previous Page</a> |
-                    {% endif %}
-                    Current Page: {{ page }} | <a href="{{ url_for('invoices.add_line_items', invoice_id=invoice_id, page=(page + 1)) }}">Next Page</a>
-                </div>
             </div>
         </div>
+        <table class="siimple-table siimple-table--border siimple-table--striped">
+            <thead class="siimple-table-header">
+                <tr class="siimple-table-row">
+                    <th class="siimple-table-cell">Campaign ID</th>
+                    <th class="siimple-table-cell">Campaign Name</th>
+                    <th class="siimple-table-cell">Line Item Name</th>
+                    <th class="siimple-table-cell">Booked Amount</th>
+                    <th class="siimple-table-cell">Actual Amount</th>
+                    <th class="siimple-table-cell">Adjustments</th>
+                    <th class="siimple-table-cell">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="siimple-table-body">
+                {% for line_item in line_items %}
+                    <tr class="siimple-table-row">
+                        <td class="siimple-table-cell">{{ line_item.campaign_id }}</td>
+                        <td class="siimple-table-cell">{{ line_item.campaign_name }}</td>
+                        <td class="siimple-table-cell">{{ line_item.line_item_name }}</td>
+                        <td class="siimple-table-cell">{{ line_item.booked_amount }}</td>
+                        <td class="siimple-table-cell">{{ line_item.actual_amount }}</td>
+                        <td class="siimple-table-cell">{{ line_item.adjustments }}</td>
+                        <td class="siimple-table-cell">
+                            <form action="{{ url_for('invoices.add_line_item_to_invoice', invoice_id=invoice_id, page=page) }}", method="post">
+                                <input type="hidden" name="line_item_id" value="{{ line_item.id }}">
+                                <button class="siimple-btn siimple-btn--fluid siimple-btn--success">Add</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% if page > 1 %}
+            <a href="{{ url_for('invoices.add_line_items', invoice_id=invoice_id, page=(page - 1)) }}">Previous Page</a> |
+        {% endif %}
+        Current Page: {{ page }} | <a href="{{ url_for('invoices.add_line_items', invoice_id=invoice_id, page=(page + 1)) }}">Next Page</a>
     </section>
 {% endblock %}

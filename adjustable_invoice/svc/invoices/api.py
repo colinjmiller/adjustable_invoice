@@ -77,9 +77,33 @@ class InvoicesAPI():
         with session_scope() as session:
             line_items = (
                 session.query(LineItem)
-                .filter(LineItem.invoice_id != invoice_id)
+                .filter(LineItem.invoice_id.is_(None))
                 .offset(page * PAGE_SIZE)
                 .limit(PAGE_SIZE)
             )
 
             return InvoicesAPI.line_items_to_list(line_items)
+
+    def add_line_item_to_invoice(invoice_id, line_item_id):
+        with session_scope() as session:
+            line_item = (
+                session.query(LineItem)
+                .filter_by(id=line_item_id)
+                .first()
+            )
+            line_item.invoice_id = invoice_id
+            session.add(line_item)
+
+    def bulk_add_line_items(line_items):
+        with session_scope() as session:
+            objects = []
+            for line_item in line_items:
+                objects.append(LineItem(
+                    campaign_id=line_item['campaign_id'],
+                    campaign_name=line_item['campaign_name'],
+                    line_item_name=line_item['line_item_name'],
+                    booked_amount=line_item['booked_amount'],
+                    actual_amount=line_item['actual_amount'],
+                    adjustments=line_item['adjustments']
+                ))
+            session.bulk_save_objects(objects)

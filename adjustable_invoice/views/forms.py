@@ -1,4 +1,4 @@
-from wtforms import Form, StringField, PasswordField, validators
+from wtforms import Form, StringField, PasswordField, validators, IntegerField
 
 
 class UserForm(Form):
@@ -8,3 +8,7 @@ class UserForm(Form):
 
 class InvoiceCreationForm(Form):
     name = StringField('name')
+
+
+class AddLineItemForm(Form):
+    line_item_id = IntegerField('line_item_id')
