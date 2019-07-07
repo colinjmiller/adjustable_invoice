@@ -1,6 +1,8 @@
 from adjustable_invoice.svc.base import session_scope
 from adjustable_invoice.svc.invoices.models import Invoice, LineItem
+from adjustable_invoice.svc.invoices.models import LineItemComment
 from adjustable_invoice.svc.invoices.exceptions import InvoiceNotFound
+from adjustable_invoice.svc.invoices.exceptions import LineItemNotFound
 from flask_login import current_user
 
 
@@ -36,6 +38,21 @@ class InvoicesAPI():
             line_items_list.append(InvoicesAPI.line_item_to_dict(line_item))
         return line_items_list
 
+    def comment_to_dict(comment):
+        return {
+            'id': comment.id,
+            'line_item_id': comment.line_item_id,
+            'message': comment.message,
+            'owner': comment.owner,
+            'created_at': comment.created_at
+        }
+
+    def comments_to_list(comments):
+        comments_list = []
+        for comment in comments:
+            comments_list.append(InvoicesAPI.comment_to_dict(comment))
+        return comments_list
+
     def get_invoices_for_user(user_id):
         with session_scope() as session:
             invoices = (
@@ -62,6 +79,19 @@ class InvoicesAPI():
             if not invoice:
                 raise InvoiceNotFound('That invoice does not exist')
             return InvoicesAPI.invoice_to_dict(invoice)
+
+    def get_line_item_by_id(line_item_id):
+        with session_scope() as session:
+            line_item = (
+                session.query(LineItem)
+                .filter_by(id=line_item_id)
+                .first()
+            )
+
+            if not line_item:
+                raise LineItemNotFound('That line item does not exist')
+
+            return InvoicesAPI.line_item_to_dict(line_item)
 
     def get_line_items_on_invoice(invoice_id):
         with session_scope() as session:
@@ -93,6 +123,39 @@ class InvoicesAPI():
             )
             line_item.invoice_id = invoice_id
             session.add(line_item)
+
+    def set_line_item_adjustment(line_item_id, adjustments):
+        with session_scope() as session:
+            line_item = (
+                session.query(LineItem)
+                .filter_by(id=line_item_id)
+                .first()
+            )
+
+            if not line_item:
+                raise LineItemNotFound('That line item does not exist')
+
+            line_item.adjustments = adjustments
+
+            return InvoicesAPI.line_item_to_dict(line_item)
+
+    def get_comments_for_line_item(line_item_id):
+        with session_scope() as session:
+            comments = (
+                session.query(LineItemComment)
+                .filter_by(line_item_id=line_item_id)
+                .order_by(LineItemComment.created_at.desc())
+            )
+
+            return InvoicesAPI.comments_to_list(comments)
+
+    def create_comment_for_line_item(line_item_id, message, owner):
+        with session_scope() as session:
+            line_item_comment = LineItemComment()
+            line_item_comment.line_item_id = line_item_id
+            line_item_comment.message = message
+            line_item_comment.owner = owner
+            session.add(line_item_comment)
 
     def bulk_add_line_items(line_items):
         with session_scope() as session:

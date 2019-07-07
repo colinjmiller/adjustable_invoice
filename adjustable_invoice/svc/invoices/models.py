@@ -1,3 +1,4 @@
+import datetime
 from adjustable_invoice.svc.base import db
 
 
@@ -16,3 +17,11 @@ class LineItem(db.Model):
     booked_amount = db.Column(db.Float)
     actual_amount = db.Column(db.Float)
     adjustments = db.Column(db.Float)
+
+
+class LineItemComment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    line_item_id = db.Column(db.Integer, db.ForeignKey('line_item.id'))
+    message = db.Column(db.Text)
+    owner = db.Column(db.String)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)

@@ -41,14 +41,15 @@
                         <td class="siimple-table-cell">{{ line_item.campaign_id }}</td>
                         <td class="siimple-table-cell">{{ line_item.campaign_name }}</td>
                         <td class="siimple-table-cell">{{ line_item.line_item_name }}</td>
-                        <td class="siimple-table-cell">{{ line_item.booked_amount }}</td>
-                        <td class="siimple-table-cell">{{ line_item.actual_amount }}</td>
-                        <td class="siimple-table-cell">{{ line_item.adjustments }}</td>
+                        <td class="siimple-table-cell">{{ line_item.booked_amount | as_currency }}</td>
+                        <td class="siimple-table-cell">{{ line_item.actual_amount | as_currency }}</td>
+                        <td class="siimple-table-cell">{{ line_item.adjustments | as_currency }}</td>
                         <td class="siimple-table-cell">
-                            <form action="{{ url_for('invoices.add_line_item_to_invoice', invoice_id=invoice_id, page=page) }}", method="post">
+                            <form class="siimple-form" action="{{ url_for('invoices.add_line_item_to_invoice', invoice_id=invoice_id, page=page) }}", method="post">
                                 <input type="hidden" name="line_item_id" value="{{ line_item.id }}">
-                                <button class="siimple-btn siimple-btn--fluid siimple-btn--success">Add</button>
+                                <button class="siimple-btn siimple-btn--fluid siimple-btn--primary">Add</button>
                             </form>
+                            <a href="{{ url_for('invoices.edit_line_item', line_item_id=line_item.id) }}" class="siimple-btn siimple-btn--success">Edit or Comment</a>
                         </td>
                     </tr>
                 {% endfor %}

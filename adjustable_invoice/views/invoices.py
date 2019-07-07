@@ -2,7 +2,9 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from adjustable_invoice.svc.invoices.api import InvoicesAPI
 from adjustable_invoice.svc.invoices.exceptions import InvoiceNotFound
+from adjustable_invoice.svc.invoices.exceptions import LineItemNotFound
 from .forms import InvoiceCreationForm, AddLineItemForm
+from .forms import EditLineItemAdjustmentForm, LineItemCommentForm
 
 blueprint = Blueprint('invoices', __name__)
 
@@ -78,3 +80,54 @@ def add_line_item_to_invoice(invoice_id, page):
     return redirect(url_for('invoices.add_line_items',
                             invoice_id=invoice_id,
                             page=page))
+
+@blueprint.route('/edit_line_item/<int:line_item_id>', methods=['GET'])
+@login_required
+def edit_line_item(line_item_id):
+    try:
+        line_item = InvoicesAPI.get_line_item_by_id(line_item_id)
+        comments = InvoicesAPI.get_comments_for_line_item(line_item_id)
+    except LineItemNotFound as e:
+        flash(e.value, 'error')
+        return redirect(url_for('invoices.index'))
+
+    return render_template('invoices/edit_line_item.html',
+                           line_item=line_item,
+                           comments=comments)
+
+
+@blueprint.route('/edit_line_item_adjustment/<int:line_item_id>',
+                 methods=['POST'])
+@login_required
+def edit_line_item_adjustment(line_item_id):
+    form = EditLineItemAdjustmentForm(request.form)
+    if not form.validate():
+        flash('Could not edit that line item adjustment', 'error')
+        return redirect(url_for('invoices.edit_line_item',
+                                line_item_id=line_item_id))
+    try:
+        line_item = InvoicesAPI.set_line_item_adjustment(line_item_id,
+                                                         form.adjustments.data)
+    except LineItemNotFound as e:
+        flash(e.value, 'error')
+        return redirect(url_for('invoices.index'))
+
+    return redirect(url_for('invoices.edit_line_item',
+                            line_item_id=line_item_id))
+
+@blueprint.route('/edit_line_item/<int:line_item_id>/comment',
+                 methods=['POST'])
+@login_required
+def comment_on_line_item(line_item_id):
+    form = LineItemCommentForm(request.form)
+    if not form.validate():
+        flash('Could not add comment', 'error')
+        return redirect(url_for('invoices.edit_line_item',
+                                line_item_id=line_item_id))
+
+    InvoicesAPI.create_comment_for_line_item(line_item_id,
+                                             form.message.data,
+                                             current_user.email)
+
+    return redirect(url_for('invoices.edit_line_item',
+                            line_item_id=line_item_id))

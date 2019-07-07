@@ -39,7 +39,7 @@
                                 <tr class="siimple-table-row">
                                     <td class="siimple-table-cell">{{ invoice.id }}</td>
                                     <td class="siimple-table-cell">{{ invoice.name }}</td>
-                                    <td class="siimple-table-cell"><a href="{{ url_for('invoices.edit_invoice', invoice_id=invoice.id) }}">Adjust Line Items</a> | <a href="#">Print</a></td>
+                                    <td class="siimple-table-cell"><a class="siimple-btn siimple-btn--success" href="{{ url_for('invoices.edit_invoice', invoice_id=invoice.id) }}">Adjust Line Items</a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>

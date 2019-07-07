@@ -29,6 +29,7 @@
                                 <th class="siimple-table-cell">Booked Amount</th>
                                 <th class="siimple-table-cell">Actual Amount</th>
                                 <th class="siimple-table-cell">Adjustments</th>
+                                <th class="siimple-table-cell">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="siimple-table-body">
@@ -40,15 +41,24 @@
                                     <td class="siimple-table-cell">{{ line_item.booked_amount | as_currency }}</td>
                                     <td class="siimple-table-cell">{{ line_item.actual_amount | as_currency }}</td>
                                     <td class="siimple-table-cell">{{ line_item.adjustments | as_currency }}</td>
+                                    <td class="siimple-table-cell"><a href="{{ url_for('invoices.edit_line_item', line_item_id=line_item.id) }}" class="siimple-btn siimple-btn--success">Edit or Comment</a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>
                         <tfoot class="siimple-table-header">
-                            <tr class="siimple-table-row">
+                            <tr class="siimple-table-row util-text-left">
                                 <th class="siimple-table-cell" colspan="3">Totals</td>
                                 <td class="siimple-table-cell">{{ line_items | sum(attribute='booked_amount') | as_currency }}</td>
                                 <td class="siimple-table-cell">{{ line_items | sum(attribute='actual_amount') | as_currency }}</td>
                                 <td class="siimple-table-cell">{{ line_items | sum(attribute='adjustments') | as_currency }}</td>
+                                <td class="siimple-table-cell"></td>
+                            </tr>
+                        </tfoot>
+                        <tfoot class="siimple-table-header">
+                            <tr class="siimple-table-row util-text-left">
+                                <th class="siimple-table-cell" colspan="4">Grand Total (Actuals + Adjustments)</td>
+                                <td class="siimple-table-cell" colspan="2">{{ ((line_items | sum(attribute='actual_amount')) + (line_items | sum(attribute='adjustments'))) | as_currency }}</td>
+                                <td class="siimple-table-cell"></td>
                             </tr>
                         </tfoot>
                     </table>

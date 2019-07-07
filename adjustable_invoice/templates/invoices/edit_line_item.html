@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block title -%}
+    Invoices
+{%- endblock %}
+{% block content %}
+    <section class="siimple-content siimple-content--extra-large">
+        <div class="siimple-grid">
+            <div class="siimple-grid-row">
+                <div class="siimple-grid-col siimple-grid-col--9">
+                    <h1>{{ line_item.line_item_name }}</h1>
+                    <table class="siimple-table siimple-table--border siimple-table--striped">
+                        <thead class="siimple-table-header">
+                            <tr class="siimple-table-row">
+                                <th class="siimple-table-cell">Campaign ID</th>
+                                <th class="siimple-table-cell">Campaign Name</th>
+                                <th class="siimple-table-cell">Line Item Name</th>
+                                <th class="siimple-table-cell">Booked Amount</th>
+                                <th class="siimple-table-cell">Actual Amount</th>
+                                <th class="siimple-table-cell">Adjustments</th>
+                            </tr>
+                        </thead>
+                        <tbody class="siimple-table-body">
+                            <tr class="siimple-table-row">
+                                <td class="siimple-table-cell">{{ line_item.campaign_id }}</td>
+                                <td class="siimple-table-cell">{{ line_item.campaign_name }}</td>
+                                <td class="siimple-table-cell">{{ line_item.line_item_name }}</td>
+                                <td class="siimple-table-cell">{{ line_item.booked_amount | as_currency }}</td>
+                                <td class="siimple-table-cell">{{ line_item.actual_amount | as_currency }}</td>
+                                <td class="siimple-table-cell">{{ line_item.adjustments | as_currency }}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="siimple-table-header">
+                            <tr class="siimple-table-row util-text-left">
+                                <th class="siimple-table-cell" colspan="4">Billable Amount (Actuals + Adjustments)</td>
+                                <td class="siimple-table-cell" colspan="2">{{ (line_item.actual_amount + line_item.adjustments) | as_currency }}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="siimple-grid-col siimple-grid-col--3">
+                    <h2 class="siimple-h2">Edit Adjustments</h2>
+                    <form class="siimple-form" method="POST" action="{{ url_for('invoices.edit_line_item_adjustment', line_item_id=line_item.id) }}">
+                        <div class="siimple-field">
+                            <label class="siimple-field-label" for="adjustments">Adjustments</label>
+                            <input class="siimple-input siimple-input--fluid" type="text" id="adjustments" name="adjustments" value="{{ line_item.adjustments }}">
+                        </div>
+                        <button class="siimple-btn siimple-btn--primary siimple-btn--fluid siimple--text-bold">Save Adjustments</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="siimple-content siimple-content--extra-large">
+        <h2 class="siimple-h2">Comments</h2>
+        {% for comment in comments %}
+            <div class="siimple-card">
+                <div class="siimple-card-header">
+                    {{ comment.owner }}
+                </div>
+                <div class="siimple-card-body">
+                    {{ comment.message }}
+                </div>
+                <div class="siimple-card-footer">
+                    {{ comment.created_at }}
+                </div>
+            </div>
+        {% else %}
+            <p class="siimple-paragraph">There are no comment on this line item</p>
+        {% endfor %}
+        <form class="siimple-form" method="POST" action="{{ url_for('invoices.comment_on_line_item', line_item_id=line_item.id) }}">
+            <div class="siimple-form-title">Add a comment</div>
+            <div class="siimple-form-field">
+                <label class="siimple-form-field-label" for="message">Message</label>
+                <textarea class="siimple-textarea" id="message" name="message"></textarea>
+            </div>
+            <div class="siimple-form-field">
+                <button class="siimple-btn siimple-btn--blue">Add comment</button>
+            </div>
+        </form>
+    </section>
+{% endblock %}

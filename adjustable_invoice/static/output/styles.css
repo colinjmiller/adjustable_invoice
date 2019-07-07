@@ -3848,8 +3848,11 @@ html {
                                                                                                                                                                                                                                   .siimple--rounded {
                                                                                                                                                                                                                                     border-radius: 5px; }
 
-.util-text-center {
-  text-align: center; }
+.util-text-left {
+  text-align: left; }
+
+  .util-text-center {
+    text-align: center; }
 
 main {
   min-height: 100vh; }

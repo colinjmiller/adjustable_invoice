@@ -9,3 +9,7 @@ class BaseInvoicesException(Exception):
 
 class InvoiceNotFound(BaseInvoicesException):
     pass
+
+
+class LineItemNotFound(BaseInvoicesException):
+    pass
