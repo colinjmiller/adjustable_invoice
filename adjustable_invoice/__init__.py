@@ -9,6 +9,7 @@ app.register_blueprint(invoices.blueprint, url_prefix='/invoices')
 
 
 # Configure settings for the environment
+# Please note the README section on "if I had more time" relating to this.
 app.secret_key = 'CHANGEME'
 
 # Session management
