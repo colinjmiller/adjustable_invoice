@@ -20,6 +20,6 @@ python manage.py db upgrade
 # Add all of the sample line items
 python manage.py import_line_items
 
-# nosetests tests/*tests.py
+pytest
 
 echo "All tests passed!"
