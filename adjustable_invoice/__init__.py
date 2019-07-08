@@ -18,9 +18,11 @@ login_manager = LoginManager()
 login_manager.login_view = "home.index"
 login_manager.init_app(app)
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return UsersAPI.get_user_by_id(user_id)
+
 
 # Hook up the database
 from .svc.base import db

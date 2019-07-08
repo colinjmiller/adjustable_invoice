@@ -45,6 +45,7 @@ def edit_invoice(invoice_id):
                            invoice=invoice,
                            line_items=line_items)
 
+
 @blueprint.route('/edit_invoice/<int:invoice_id>/add_line_items/<int:page>')
 @login_required
 def add_line_items(invoice_id, page):
@@ -65,6 +66,7 @@ def add_line_items(invoice_id, page):
                            line_items=line_items,
                            page=page)
 
+
 @blueprint.route('/edit_invoice/<int:invoice_id>/add_line_items/<int:page>',
                  methods=['POST'])
 @login_required
@@ -80,6 +82,7 @@ def add_line_item_to_invoice(invoice_id, page):
     return redirect(url_for('invoices.add_line_items',
                             invoice_id=invoice_id,
                             page=page))
+
 
 @blueprint.route('/edit_line_item/<int:line_item_id>', methods=['GET'])
 @login_required
@@ -106,14 +109,15 @@ def edit_line_item_adjustment(line_item_id):
         return redirect(url_for('invoices.edit_line_item',
                                 line_item_id=line_item_id))
     try:
-        line_item = InvoicesAPI.set_line_item_adjustment(line_item_id,
-                                                         form.adjustments.data)
+        InvoicesAPI.set_line_item_adjustment(line_item_id,
+                                             form.adjustments.data)
     except LineItemNotFound as e:
         flash(e.value, 'error')
         return redirect(url_for('invoices.index'))
 
     return redirect(url_for('invoices.edit_line_item',
                             line_item_id=line_item_id))
+
 
 @blueprint.route('/edit_line_item/<int:line_item_id>/comment',
                  methods=['POST'])

@@ -1,0 +1,6 @@
+version: "3.7"
+services:
+  adjustable_invoice:
+    restart: "no"
+    entrypoint:
+      - /adjustable_invoice/dev_scripts/run_tests.sh

@@ -1,5 +1,6 @@
 from flask import url_for
 
+
 def register_filters(app):
 
     @app.template_filter()

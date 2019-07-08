@@ -49,7 +49,7 @@ class UsersAPI():
 
             if not password_match:
                 raise exceptions.AuthenticationFailed(
-                    'We did not find a user with that email ' +
+                    'We did not find a user with that email '
                     'and password combination')
 
             return UsersAPI.user_to_dict(user)
