@@ -14,8 +14,10 @@ echo "PEP8 analysis passed. Proceeding to unit tests."
 sleep 5
 
 # Recreate the DB on each start
+set +e
 python manage.py recreate_db
 python manage.py db upgrade
+set -e
 
 # Add all of the sample line items
 python manage.py import_line_items
